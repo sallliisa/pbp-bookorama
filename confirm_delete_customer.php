@@ -1,9 +1,3 @@
-<?php
-  require_once('./lib/db_login.php');
-
-  $res = $db->query("SELECT * FROM customers WHERE customerid={$_GET['id']}");
-?>
-
 <?php include('./header.php') ?>
 <div class="card mt-4">
   <div class="card-header">Konfirmasi Hapus</div>
@@ -11,6 +5,8 @@
     <div>Apakah anda yakin ingin menghapus data ini?</div>
     <table class="mt-2">
       <?php
+        require_once('./lib/db_login.php');
+        $res = $db->query("SELECT * FROM customers WHERE customerid={$_GET['id']}");
         while ($row = $res->fetch_object()) {
           echo "<tr>";
             echo "<td>Nama</td>";

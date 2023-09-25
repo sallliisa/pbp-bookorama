@@ -1,4 +1,11 @@
-<?php include('./header.php') ?>
+<?php 
+include('./header.php');
+
+session_start();
+if (!isset($_SESSION['username'])){
+    header('Location: login.php');
+}
+?>
 <div class="card mt-5">
     <div class="card-header">Customers Data</div>
     <div class="card-body">
@@ -37,13 +44,11 @@
             }
             ?>
         </table>
-        <br>
         <div>Total rows: <?php echo $result->num_rows?></div>
         <?php
             $result->free();
             $db->close();
         ?>
-        <br><br>
         <a class="btn btn-primary" href="logout.php">Logout</a>
     </div>
 </div>
